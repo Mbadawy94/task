@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\School;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,11 @@ class studentNotifyMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $school;
+
+    public function __construct(School $school)
     {
-        //
+        $this->school = $school;
     }
 
     /**
@@ -29,6 +32,6 @@ class studentNotifyMail extends Mailable
     public function build()
     {
         return $this->subject('Student Number of school')
-        ->view('');
+                ->view('mail.student-notify-mail');
     }
 }

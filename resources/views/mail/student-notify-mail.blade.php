@@ -1,12 +1,11 @@
-@component('mail::message')
-# Introduction
-
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Number</title>
+</head>
+<body>
+    <p>School: {{ $school->name }} has {{ $school->students()->count() }} student.</p>
+   
+    <p>Thank you</p>
+</body>
+</html>

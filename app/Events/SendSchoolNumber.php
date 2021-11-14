@@ -25,6 +25,7 @@ class SendSchoolNumber
 
     public function __construct(School $school)
     {
+        dd($school);
         $this->school = $school;
     }
 

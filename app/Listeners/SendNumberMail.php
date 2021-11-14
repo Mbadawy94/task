@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SendSchoolNumber;
+use App\Mail\studentNotifyMail;
 use App\Models\School;
 use App\Notifications\SendStudentsNumberNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,9 +16,11 @@ class SendNumberMail
      *
      * @return void
      */
-    public function __construct()
+
+    public $school;
+    public function __construct(School $school)
     {
-        //
+        $this->school = $school;
     }
 
     /**
@@ -33,6 +36,6 @@ class SendNumberMail
 
     function sendEmail($school)
     {
-        return redirect()->route('email');
+        return redirect()->route('send-email', $school);
     }
 }
