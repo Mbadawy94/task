@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('send-mail', function () {
+   
+   
+    Mail::to('mbadawy1994@gmail.com')->send(new \App\Mail\studentNotifyMail);
+   
+    dd("Email is Sent.");
+})->name('email');;
